@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inova Green</title>
+<style>
+:root{--bg:#000;--fg:#ecf5ee;--mut:#9db3a3;--bd:#1f3a28;--cd:rgba(10,20,14,.72);color-scheme:dark;--g:#16a34a;--g2:#4ade80;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--fg:#ecf5ee;--mut:#9db3a3;--bd:#1f3a28;--cd:rgba(10,20,14,.72)}}
+:root[data-theme="dark"]{--bg:#000;--fg:#ecf5ee;--mut:#9db3a3;--bd:#1f3a28;--cd:rgba(10,20,14,.72)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Impact,"Arial Narrow",system-ui,sans-serif;overflow-x:hidden}
+.bl{position:fixed;border-radius:50%;filter:blur(80px);background:#4ade80;opacity:.3;z-index:-1;animation:fl 15s ease-in-out infinite alternate}
+.b1{width:360px;height:360px;top:-100px;left:-100px}.b2{width:400px;height:400px;bottom:-120px;right:-120px;animation-name:fl2;animation-delay:-5s}
+.b3{width:260px;height:260px;top:38%;left:58%;opacity:.18;animation-name:fl3;animation-duration:19s}
+@keyframes fl{to{transform:translate(22vw,16vh) scale(1.25)}}
+@keyframes fl2{to{transform:translate(-22vw,-16vh) scale(1.2)}}
+@keyframes fl3{to{transform:translate(-26vw,10vh) scale(1.4)}}
+nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:12px}
+nav button{font:inherit;letter-spacing:.06em;text-transform:uppercase;background:none;border:2px solid transparent;color:var(--fg);padding:8px 16px;border-radius:99px;cursor:pointer;transition:.25s}
+nav button.on,nav button:hover{background:var(--g);color:#fff}
+.w{max-width:980px;margin:0 auto;padding:12px 16px 40px}
+.pg{display:none}.pg.on{display:block;animation:in .6s}
+@keyframes in{from{opacity:0;transform:translateY(18px)}}
+.hero{text-align:center}
+.hero img{width:min(240px,55vw);border-radius:24px;animation:bob 3.2s ease-in-out infinite;box-shadow:0 12px 40px rgba(22,163,74,.35)}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-2deg)}}
+h1{font-size:clamp(44px,11vw,96px);line-height:.95;margin:14px 0 4px;letter-spacing:.01em}
+h1 span{color:var(--g)}
+h2{font-size:clamp(26px,5vw,40px);margin:0 0 10px;letter-spacing:.02em}
+h2 span{color:var(--g)}
+.tag{font-family:system-ui,sans-serif;color:var(--mut);max-width:560px;margin:0 auto 16px;font-size:17px}
+.cta{font:inherit;letter-spacing:.06em;text-transform:uppercase;background:var(--g);color:#fff;border:0;border-radius:99px;padding:12px 26px;cursor:pointer;font-size:16px;animation:pl 2s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(22,163,74,.6)}100%{box-shadow:0 0 0 18px rgba(22,163,74,0)}}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:18px;padding:16px;backdrop-filter:blur(8px);font-family:system-ui,sans-serif}
+.card p{color:var(--mut);margin:6px 0;line-height:1.5}
+#c{width:100%;border-radius:18px;border:1px solid var(--bd);overflow:hidden;touch-action:none;background:var(--cd);margin:18px 0 8px}
+canvas{display:block;width:100%;height:100%}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:system-ui,sans-serif}
+.bar button{font:inherit;font-size:14px;background:var(--cd);color:var(--fg);border:1px solid var(--bd);border-radius:10px;padding:8px 14px;cursor:pointer}
+.bar button.on{border-color:var(--g);background:var(--g);color:#fff}
+.bar label{margin-left:auto;font-size:14px;color:var(--mut)}
+.sb[data-s=good].on{background:#22c55e}.sb[data-s=mid].on{background:#eab308;border-color:#eab308;color:#111}.sb[data-s=bad].on{background:#ef4444;border-color:#ef4444}
+.gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:16px}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:8px;vertical-align:middle;animation:bk 1.6s infinite}
+@keyframes bk{50%{opacity:.35}}
+.rv{opacity:0;transform:translateY(24px);transition:.7s}.rv.v{opacity:1;transform:none}
+form{display:grid;gap:10px;margin-top:10px}
+input,select{font:inherit;font-family:system-ui,sans-serif;padding:11px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+.q{font-size:clamp(22px,4vw,32px);text-align:center;margin:26px 0;min-height:2.6em;color:var(--g)}
+.hint{font-family:system-ui,sans-serif;font-size:13px;color:var(--mut)}
+a{color:var(--g)}
+.mw{display:flex;gap:14px;align-items:center;margin:18px 0 8px}
+.mw #c{flex:1 1 0;min-width:0;margin:0}
+.lp{flex:0 0 auto;text-align:center;font-family:system-ui,sans-serif}
+.lb{background:#15803d;border:2px solid #14532d;border-radius:12px;padding:10px;box-shadow:0 10px 28px rgba(22,163,74,.3)}
+.ls{background:#1d4ed8;color:#e8f0ff;font:bold 17px/1.55 "Courier New",monospace;white-space:pre;padding:10px 12px;border-radius:6px;box-shadow:inset 0 0 18px rgba(0,0,40,.45);width:calc(16ch + 24px);overflow:hidden;text-align:left}
+.lp .hint{margin:8px 0 0}
+#tr{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+@media(max-width:760px){.mw{flex-direction:column;align-items:stretch}.lp{align-self:center}}
+.logo{display:block;width:min(300px,72vw);height:auto;margin:0 auto 6px;overflow:visible;animation:lf 5s ease-in-out infinite,lg 3.4s ease-in-out infinite}
+@keyframes lf{50%{transform:translateY(-8px)}}
+@keyframes lg{0%,100%{filter:drop-shadow(0 0 6px rgba(74,222,128,.3))}50%{filter:drop-shadow(0 0 22px rgba(74,222,128,.6))}}
+.logo .rays line{animation:ry 3s ease-in-out infinite;animation-delay:calc(var(--i)*.3s)}
+@keyframes ry{0%,100%{opacity:.25}50%{opacity:1}}
+.logo .gear{transform-origin:162px 118px;animation:sp 14s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.logo .trc path{stroke-dasharray:5 6;animation:df 1.6s linear infinite}
+@keyframes df{to{stroke-dashoffset:-22}}
+@media(prefers-reduced-motion:reduce){.logo,.logo *,.bl{animation:none!important}}
+.ig{display:flex;flex-direction:column;align-items:center;gap:10px;margin:22px 0 6px;text-decoration:none;color:var(--fg);font-family:system-ui,sans-serif}
+.ig .ic{width:84px;height:84px;border-radius:24px;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(214,36,159,.35);transition:transform .25s}
+.ig:hover .ic{transform:scale(1.1) rotate(-4deg)}
+.ig svg{width:46px;height:46px}
+.ig span{font-size:15px;color:var(--mut)}
+details{margin:8px 0;font-family:system-ui,sans-serif}summary{cursor:pointer}details p{color:var(--mut);line-height:1.5}
+#c2{width:100%;border-radius:18px;border:1px solid var(--bd);overflow:hidden;touch-action:none;background:var(--cd);margin:14px 0 10px}
+#tips .gr,#tech .gr{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.bl{opacity:.5;filter:blur(60px);animation-duration:11s}.b1{width:440px;height:440px}.b2{width:480px;height:480px}.b3{width:320px;height:320px;opacity:.35;animation-duration:14s}
+@keyframes fl{50%{transform:translate(30vw,8vh) scale(1.3)}to{transform:translate(12vw,34vh) scale(1.1)}}
+@keyframes fl2{50%{transform:translate(-28vw,-10vh) scale(1.25)}to{transform:translate(-10vw,-32vh) scale(1.05)}}
+@keyframes fl3{50%{transform:translate(-30vw,14vh) scale(1.45)}to{transform:translate(-8vw,-20vh) scale(1.1)}}
+#tips .gr{align-items:start}#tips .card{cursor:pointer;transition:.7s,border-color .25s}#tips .card:hover,#tips .card.open{border-color:var(--g)}
+#tips .card h2{margin:0}#tips .card h2::after{content:"+";float:right;margin-left:10px;color:var(--g)}#tips .card.open h2::after{content:"\2212"}
+#tips .card p{max-height:0;overflow:hidden;margin:0;transition:max-height .4s,margin .4s}#tips .card.open p{max-height:220px;margin:8px 0 0}
+#tips .gr{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}#tech .gr{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+#tips .card,#tech .gr .card{flex-direction:column;text-align:center;gap:10px;min-width:0;padding:18px 14px}
+#tips .card>div,#tech .gr .card>div{width:100%;min-width:0}
+#tips .card h2,#tech .gr .card h2{font-size:clamp(20px,4.6vw,26px);line-height:1.1;overflow-wrap:anywhere;margin:0}
+#tips .card h2::after{float:none;display:inline-block;margin-left:8px}
+#tech .gr .card p{margin:8px 0 0}
+</style></head><body>
+<div class="bl b1"></div><div class="bl b2"></div><div class="bl b3"></div>
+<nav><button class="nv on" data-p="home">Início</button><button class="nv" data-p="sim">Simulador</button><button class="nv" data-p="tips">Dicas</button><button class="nv" data-p="tech">Como é feito</button><button class="nv" data-p="buy">Comprar</button><button class="nv" data-p="about">Sobre nós</button></nav>
+<div class="w">
+
+<section class="pg on" id="home">
+<div class="hero"><svg class="logo" viewBox="0 0 300 290" role="img" aria-label="Logo Inova Green">
+<defs><radialGradient id="lg" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#4ade80" stop-opacity=".4"/><stop offset="1" stop-color="#4ade80" stop-opacity="0"/></radialGradient></defs>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<g class="rays" stroke="#ecf5ee" stroke-width="3.5"><line style="--i:0" x1="84" y1="120" x2="70" y2="120"/><line style="--i:1" x1="92.8" y1="87" x2="80.7" y2="80"/><line style="--i:2" x1="117" y1="62.8" x2="110" y2="50.7"/><line style="--i:3" x1="150" y1="54" x2="150" y2="40"/><line style="--i:4" x1="183" y1="62.8" x2="190" y2="50.7"/><line style="--i:5" x1="207.2" y1="87" x2="219.3" y2="80"/><line style="--i:6" x1="216" y1="120" x2="230" y2="120"/></g>
+<path d="M118 178 C118 162 98 150 98 120 A52 52 0 0 1 202 120 C202 150 182 162 182 178" fill="url(#lg)" stroke="#ecf5ee" stroke-width="3.5"/>
+<g stroke="#ecf5ee" stroke-width="3.5"><line x1="122" y1="190" x2="178" y2="190"/><line x1="126" y1="201" x2="174" y2="201"/><line x1="136" y1="212" x2="164" y2="212"/></g>
+<g class="trc" stroke="#4ade80" stroke-width="2.5"><path d="M148 104H130L122 96"/><path d="M148 118H120"/><path d="M148 132H130L122 140"/></g>
+<g fill="#4ade80" stroke="none"><circle cx="122" cy="96" r="2.8"/><circle cx="118" cy="118" r="2.8"/><circle cx="122" cy="140" r="2.8"/></g>
+<g class="gear" stroke="#4ade80"><circle cx="162" cy="118" r="13" stroke-width="5" stroke-dasharray="5.1 5.1"/><circle cx="162" cy="118" r="7" stroke-width="3"/></g>
+<path d="M96 246 Q150 290 204 246" stroke="#4ade80" stroke-width="3.5"/>
+<path d="M118 254 Q150 274 182 254" stroke="#4ade80" stroke-width="3" opacity=".55"/>
+</g>
+</svg><h1>INOVA <span>GREEN</span></h1>
+<p class="tag">Meça a corrente elétrica, entenda o risco de gasto do mês e economize com ideias que acendem.</p>
+<button class="cta" onclick="go2('buy')">Quero o meu</button></div>
+<div class="mw"><div id="c"></div>
+<div class="lp"><div class="lb"><div class="ls"><div id="ls1"></div><div id="ls2"></div></div></div><p class="hint">Display LCD 16x2</p></div></div>
+<div class="bar"><button class="vb on" data-v="front">Frente</button><button class="vb" data-v="top">Cima</button><button class="vb" data-v="back">Trás</button><button class="vb" data-v="iso">Isométrica</button><button id="ex">Desmontar</button><label><input type="checkbox" id="lid"> Tampa</label></div>
+<p class="hint">Arraste para girar, role ou use pinça para aproximar. Toque numa peça para saber o que ela faz.</p><p class="hint" id="pi"></p>
+<div class="card rv" style="margin-top:14px"><h2>Como <span>funciona</span></h2>
+<p>O Inova Green mede a <b>corrente elétrica</b> do aparelho ligado a ele (sensor ACS712 + Arduino) e mostra potência e corrente no display. Depois, analisa o risco de gasto do mês e acende o LED correspondente. Teste abaixo e veja o LED e o display no modelo:</p>
+<div class="bar" style="margin-top:10px"><button class="sb on" data-s="good">Bom</button><button class="sb" data-s="mid">Médio</button><button class="sb" data-s="bad">Ruim</button></div>
+<p id="sd" style="min-height:3em"></p></div>
+<div class="gr">
+<div class="card rv"><h2><i class="dot" style="background:#22c55e"></i>Verde</h2><p>Consumo baixo: o gasto do mês está sob controle.</p></div>
+<div class="card rv"><h2><i class="dot" style="background:#facc15"></i>Amarelo</h2><p>Atenção: o consumo está médio e vale rever hábitos.</p></div>
+<div class="card rv"><h2><i class="dot" style="background:#ef4444"></i>Vermelho</h2><p>Risco alto: o gasto do mês pode estourar. Hora de agir.</p></div></div>
+<div class="q" id="q"></div>
+</section>
+
+<section class="pg" id="sim"><h1 style="font-size:clamp(36px,8vw,64px)">SIMULADOR <span>3D</span></h1>
+<p class="hint" style="text-align:center">Exemplo: o Inova Green medindo um PC gamer. Arraste para girar.</p>
+<div id="c2"></div>
+<div class="bar"><span>Potência <b id="vw">450</b> W</span><input id="pw" type="range" min="100" max="800" step="10" value="450"><span><b id="vh">4</b> h/dia</span><input id="hh" type="range" min="1" max="24" value="4"><span>R$/kWh</span><input id="tf" type="number" step=".01" min="0" value="0.95" style="width:84px"></div>
+<div class="q" id="sr" style="min-height:0"></div>
+<p class="hint" style="text-align:center">Até 150 kWh/mês: bom. Até 300: médio. Acima: ruim.</p></section>
+<section class="pg" id="tips"><h1 style="font-size:clamp(36px,8vw,64px)">DICAS DE <span>ECONOMIA</span></h1><div class="gr"><div class="card rv"><h2>Chuveiro</h2><p>Banhos mais curtos e o modo verão fazem diferença: chuveiro elétrico costuma ser um dos maiores consumidores da casa.</p></div><div class="card rv"><h2>Standby</h2><p>Aparelhos em espera continuam consumindo. Tire da tomada o que não está em uso.</p></div><div class="card rv"><h2>Lâmpadas</h2><p>Troque lâmpadas antigas por LED e apague ao sair do cômodo.</p></div><div class="card rv"><h2>Geladeira</h2><p>Mantenha a borracha de vedação em bom estado, longe do fogão, e evite abrir a porta sem necessidade.</p></div><div class="card rv"><h2>Ar-condicionado</h2><p>Limpe os filtros, feche portas e janelas e use temperatura moderada.</p></div><div class="card rv"><h2>Ferro de passar</h2><p>Junte as roupas e passe tudo de uma vez, em vez de ligar várias vezes.</p></div><div class="card rv"><h2>Carregadores</h2><p>Carregador ligado sem o aparelho ainda consome um pouco. Desconecte depois do uso.</p></div><div class="card rv"><h2>Meça</h2><p>Ligue o aparelho ao Inova Green e veja a cor do LED antes de decidir o que mudar.</p></div></div></section>
+<section class="pg" id="tech"><h1 style="font-size:clamp(36px,8vw,64px)">COMO É <span>FEITO</span></h1><div class="gr"><div class="card rv"><h2>Arduino</h2><p>Lê o sensor, calcula potência e energia e controla o display, os LEDs e o buzzer.</p></div><div class="card rv"><h2>Sensor ACS712</h2><p>Mede a corrente elétrica do aparelho ligado ao medidor.</p></div><div class="card rv"><h2>Display LCD 16x2</h2><p>Mostra potência, corrente e o nível de risco.</p></div><div class="card rv"><h2>LEDs de risco</h2><p>Verde, amarelo e vermelho: resumem o risco de gasto do mês.</p></div><div class="card rv"><h2>Buzzer</h2><p>Faz o aviso sonoro do aparelho.</p></div></div>
+<div class="card rv" style="margin-top:14px"><h2>Perguntas <span>frequentes</span></h2><details><summary>Como o Inova Green mede o consumo?</summary><p>O sensor ACS712 mede a corrente do aparelho ligado a ele. O Arduino usa esse valor para calcular potência e energia e mostra tudo no display.</p></details><details><summary>O que significam as cores dos LEDs?</summary><p>Verde: consumo baixo. Amarelo: atenção, consumo médio. Vermelho: risco alto de o gasto do mês estourar.</p></details><details><summary>Como faço meu pedido?</summary><p>Na aba Comprar, preencha o formulário. O pedido é enviado pelo nosso Instagram, @inovagreengg.</p></details><details><summary>O simulador é igual ao medidor real?</summary><p>Não. O simulador usa valores médios de referência para você ter uma ideia. O medidor mostra o consumo real do seu aparelho.</p></details></div></section>
+<section class="pg" id="buy"><h1 style="font-size:clamp(36px,8vw,64px)">FAÇA SEU <span>PEDIDO</span></h1>
+<div class="card"><p>Inova Green: caixa com Arduino, display LCD, LEDs de risco, buzzer e sensor de corrente. Preencha e enviamos o pedido pelo nosso Instagram.</p>
+<form id="f"><input id="n" placeholder="Seu nome" required><input id="t" placeholder="WhatsApp (com DDD)" required>
+<select id="k"><option>1 unidade</option><option>2 unidades</option><option>3 unidades</option><option>Mais de 3 (combinar)</option></select>
+<button class="cta" style="animation:none">Enviar pedido</button></form>
+<p class="hint" id="m"></p></div></section>
+
+<section class="pg" id="about"><h1 style="font-size:clamp(36px,8vw,64px)">SOBRE <span>NÓS</span></h1>
+<div class="card"><p>Somos o grupo <b>Inova Green</b>, formado na <b>FUNEC Riacho</b>. Criamos um medidor de corrente elétrica que transforma números em cores simples para ajudar famílias a gastar menos energia.</p></div>
+<a class="ig" href="https://www.instagram.com/inovagreengg?stkn=MWgwNzBqeDE4NXR0MQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="Abrir o Instagram @inovagreengg">
+<div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".6" fill="#fff"/></svg></div>
+<span>@inovagreengg</span></a>
+<div class="gr"><div class="card rv"><h2>Ideia</h2><p>Tecnologia acessível para entender o consumo.</p></div><div class="card rv"><h2>Ação</h2><p>Medir, avisar e incentivar escolhas melhores.</p></div><div class="card rv"><h2>Futuro</h2><p>Menos desperdício, mais planeta verde.</p></div></div></section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const box0=document.getElementById('c');
+const R=new THREE.WebGLRenderer({antialias:true,alpha:true});box0.appendChild(R.domElement);
+const S=new THREE.Scene(),g=new THREE.Group();S.add(g);
+const cam=new THREE.PerspectiveCamera(35,1.6,1,2000);
+S.add(new THREE.HemisphereLight(0xffffff,0x555566,.9));
+const dl=new THREE.DirectionalLight(0xffffff,.8);dl.position.set(120,220,200);S.add(dl);
+const P=(X,Y,Z)=>new THREE.Vector3(X-70,Z,35-Y);
+const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.55,metalness:.1},o||{}));
+const WALL=0x3a3f45;
+function box(w,h,d,c,X,Y,Z,o){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),Array.isArray(c)?c:M(c,o));m.position.copy(P(X,Y,Z));g.add(m);return m}
+function cyl(r,l,ax,c,X,Y,Z,o){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,l,28),M(c,o));if(ax=='z')m.rotation.x=Math.PI/2;if(ax=='x')m.rotation.z=Math.PI/2;m.position.copy(P(X,Y,Z));g.add(m);return m}
+function wall(w,h,holes,pos,ry){const s=new THREE.Shape();s.moveTo(0,0);s.lineTo(w,0);s.lineTo(w,h);s.lineTo(0,h);s.closePath();
+holes.forEach(o=>{const p=new THREE.Path();if(o.r)p.absarc(o.x,o.y,o.r,0,6.2832,true);else{p.moveTo(o.x-o.w/2,o.y-o.h/2);p.lineTo(o.x+o.w/2,o.y-o.h/2);p.lineTo(o.x+o.w/2,o.y+o.h/2);p.lineTo(o.x-o.w/2,o.y+o.h/2);p.closePath()}s.holes.push(p)});
+const ge=new THREE.ExtrudeGeometry(s,{depth:2,bevelEnabled:false,curveSegments:32});ge.translate(-w/2,-h/2,-1);
+const m=new THREE.Mesh(ge,M(WALL));m.position.copy(pos);m.rotation.y=ry||0;g.add(m)}
+function tube(pts,c,r){const cu=new THREE.CatmullRomCurve3(pts);const m=new THREE.Mesh(new THREE.TubeGeometry(cu,48,r||.6,6),M(c,{roughness:.4}));g.add(m);(window.FW=window.FW||[]).push(cu)}
+function wire(a,b,c,lift){const A=P(...a),B=P(...b),u=new THREE.Vector3(0,lift,0);tube([A,A.clone().lerp(B,.3).add(u),A.clone().lerp(B,.7).add(u),B],c)}
+const path=a=>a.map(q=>P(...q));
+
+box(140,2,70,WALL,70,35,1);
+wall(140,70,[{x:52,y:47,w:72,h:25},{x:20,y:15,r:2.75},{x:35,y:15,r:2.75},{x:50,y:15,r:2.75},{x:115,y:22,r:6.25}],new THREE.Vector3(0,35,34));
+wall(140,70,[{x:35,y:30,r:3},{x:20,y:30,r:3}],new THREE.Vector3(0,35,-34));
+wall(70,70,[21,28,35,42,49].map(y=>({x:y,y:35,w:2,h:25})),new THREE.Vector3(-69,35,0),Math.PI/2);
+wall(70,70,[{x:25,y:14,w:14,h:12}],new THREE.Vector3(69,35,0),Math.PI/2);
+[[5,5],[135,5],[5,65],[135,65]].forEach(p=>cyl(3.5,68,'y',WALL,p[0],p[1],36));
+const lid=box(140,2,70,0x4a5056,70,35,71);lid.visible=false;
+
+box(68.6,1.6,53.4,0x0e6f8f,96.3,39.7,5.8);
+[[65,17],[126,17],[65,62],[126,62]].forEach(p=>cyl(2.5,3.2,'y',0xaaaaaa,p[0],p[1],3.4));
+box(34,1.2,10,0x111111,100,38,7.2);
+box(16,11,12,0xb8bcc2,128,25,12.1,{metalness:.7});
+box(13,10,12,0x111111,142.5,25,12.1);cyl(2,26,'x',0x111111,162,25,12.1);
+box(32,8.5,2.5,0x111111,82,14.7,10.9);box(20,8.5,2.5,0x111111,110,14.7,10.9);
+box(15,8.5,2.5,0x111111,79.5,64.7,10.9);box(20,8.5,2.5,0x111111,98,64.7,10.9);
+
+box(58,16,31,0x1f2937,32,30.5,10);
+cyl(7.5,52,'x',0xd97706,32,23,11.5);cyl(7.5,52,'x',0xd97706,32,38,11.5);
+const cv=document.createElement('canvas');cv.width=470;cv.height=350;const x=cv.getContext('2d');
+x.fillStyle='#f3f1ea';x.fillRect(0,0,470,350);x.fillStyle='#4b5563';
+for(let c=0;c<17;c++)for(let r=0;r<14;r++){if(r==6||r==7)continue;x.fillRect(22+c*25.4,18+r*25.4,6,6)}
+x.fillStyle='#c9c4b5';x.fillRect(0,166,470,18);
+const bm=M(0xf3f1ea),tm=M(0xffffff);tm.map=new THREE.CanvasTexture(cv);
+box(47,8.5,35,[bm,bm,tm,bm,bm,bm],31.5,34.5,24);
+
+box(31,1.6,13,0x1d4ed8,27.5,60.5,5.8);
+box(9,10,7,0x16a34a,20,63.5,11.6);box(9,10,7,0x16a34a,35,63.5,11.6);box(8,1.2,8,0x111111,28,58,7.2);
+
+box(80,36,1.6,0x1f9d55,52,8.8,47);
+box(71,24,6,0x111111,52,5,47);
+[[14.5,31.5],[89.5,31.5],[14.5,62.5],[89.5,62.5]].forEach(p=>cyl(3,6,'z',0xb0b4ba,p[0],5,p[1]));
+box(41,19,2.2,0x1e40af,52,10.8,38.5);
+const lc=document.createElement('canvas');lc.width=284;lc.height=96;const l=lc.getContext('2d');
+l.fillStyle='#1d4ed8';l.fillRect(0,0,284,96);l.fillStyle='#e8f0ff';l.font='bold 30px monospace';l.fillText('INOVA GREEN',14,38);l.fillText('P:0.90W I:0.30A',14,76);
+const pl=new THREE.Mesh(new THREE.PlaneGeometry(71,24),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(lc)}));pl.position.set(-18,47,33.05);g.add(pl);
+
+[[20,0x22c55e],[35,0xfacc15],[50,0xef4444]].forEach(a=>{
+cyl(2.5,9,'z',a[1],a[0],3.5,15,{emissive:a[1],emissiveIntensity:.5});
+const d=new THREE.Mesh(new THREE.SphereGeometry(2.5,16,12),M(a[1],{emissive:a[1],emissiveIntensity:.6}));d.position.copy(P(a[0],-1,15));g.add(d)});
+cyl(6,11.5,'z',0x111111,115,5.25,22);cyl(2,.4,'z',0x333333,115,-.7,22);
+
+wire([70,14.7,15.5],[20,9.6,15],0x22c55e,8);
+wire([72.5,14.7,15.5],[35,9.6,15],0xfacc15,12);
+wire([75,14.7,15.5],[50,9.6,15],0xef4444,16);
+wire([104,14.7,15.5],[113,11.5,22],0xfb923c,6);
+wire([106.5,14.7,15.5],[117,11.5,19],0xe5e7eb,6);
+wire([34,12,30],[94.5,64.7,15.5],0x1c1c1c,30);
+wire([36.5,12,30],[92,64.7,15.5],0xdc2626,28);
+wire([39,12,30],[82,64.7,15.5],0xfacc15,26);
+wire([41.5,12,30],[84.5,64.7,15.5],0x60a5fa,24);
+wire([41,56.5,8],[76,64.7,15.5],0xfb923c,10);
+wire([41,58,8],[97,64.7,15.5],0xdc2626,13);
+wire([41,59.5,8],[99.5,64.7,15.5],0x1c1c1c,15);
+tube(path([[6,22,19.5],[8,45,33],[18,60,28],[20,63.5,17]]),0xdc2626,.7);
+tube(path([[6,26,19.5],[8,50,38],[18,66,36],[20,69,30],[20,76,26],[24,86,14],[25,95,8.5]]),0x1c1c1c,.7);
+tube(path([[35,63.5,17],[35,67,30],[35,70,30],[34,78,26],[31,88,14],[29.5,95,8.5]]),0xdc2626,.7);
+
+cyl(5,8,'y',0x666666,27.5,95,4);
+const bu=new THREE.Mesh(new THREE.SphereGeometry(8,24,18),M(0xfff2b0,{emissive:0xffc84a,emissiveIntensity:1.1,transparent:true,opacity:.92}));bu.position.copy(P(27.5,95,16));g.add(bu);
+const pt=new THREE.PointLight(0xffc870,.9,140);pt.position.copy(P(27.5,95,16));S.add(pt);
+const gr=new THREE.GridHelper(400,40,0x888888,0xaaaaaa);gr.material.transparent=true;gr.material.opacity=.35;gr.position.y=-.05;S.add(gr);
+
+const V={front:[0,32,0,0,1.45,330],top:[0,30,0,0,.04,330],back:[0,25,-20,Math.PI,1.3,380],iso:[0,30,-10,.75,1.05,380]};
+let st={t:new THREE.Vector3(0,32,0),th:0,ph:1.45,r:330},go=V.front;
+function setV(k){go=V[k];document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v==k))}
+function fixTh(){while(go[3]-st.th>Math.PI)go[3]-=2*Math.PI;while(go[3]-st.th<-Math.PI)go[3]+=2*Math.PI}
+document.querySelectorAll('.vb').forEach(b=>b.onclick=()=>{setV(b.dataset.v);fixTh()});
+document.getElementById('lid').onchange=e=>lid.visible=e.target.checked;
+let dr=null;const cn=R.domElement;
+cn.onpointerdown=e=>{dr=[e.clientX,e.clientY];cn.setPointerCapture(e.pointerId)};
+cn.onpointerup=()=>dr=null;
+cn.onpointermove=e=>{if(!dr)return;go=[go[0],go[1],go[2],go[3]-(e.clientX-dr[0])*.008,Math.min(3.1,Math.max(.04,go[4]-(e.clientY-dr[1])*.008)),go[5]];st.th=go[3];st.ph=go[4];dr=[e.clientX,e.clientY];document.querySelectorAll('.vb').forEach(b=>b.classList.remove('on'))};
+cn.addEventListener('wheel',e=>{e.preventDefault();go=[go[0],go[1],go[2],go[3],go[4],Math.min(700,Math.max(120,go[5]*(1+e.deltaY*.001)))];st.r=go[5]},{passive:false});
+function rs(){const w=box0.clientWidth;const h=Math.round(Math.min(620,w*.68));box0.style.height=h+'px';R.setPixelRatio(Math.min(2,devicePixelRatio||1));R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+addEventListener('resize',rs);rs();
+function loop(){requestAnimationFrame(loop);const k=.12;
+st.t.x+=(go[0]-st.t.x)*k;st.t.y+=(go[1]-st.t.y)*k;st.t.z+=(go[2]-st.t.z)*k;
+st.th+=(go[3]-st.th)*k;st.ph+=(go[4]-st.ph)*k;st.r+=(go[5]-st.r)*k;
+cam.position.set(st.t.x+st.r*Math.sin(st.ph)*Math.sin(st.th),st.t.y+st.r*Math.cos(st.ph),st.t.z+st.r*Math.sin(st.ph)*Math.cos(st.th));
+cam.lookAt(st.t);R.render(S,cam)}
+loop();
+</script>
+<script>
+const LD={good:0x22c55e,mid:0xfacc15,bad:0xef4444},lm={};
+g.traverse(o=>{const m=o.material;if(m&&m.emissive&&m.emissive.getHex()>0){const h=m.color.getHex();for(const k in LD)if(LD[k]==h)(lm[k]=lm[k]||[]).push(m)}});
+const TX={good:['BOM  0.90W','Consumo baixo'],mid:['MEDIO 1.8W','Atencao'],bad:['RUIM  3.5W','Gasto alto!']};
+const SD={good:'LED verde: consumo baixo. O gasto previsto do mês está bom.',mid:'LED amarelo: consumo médio. Fique de olho nos aparelhos mais pesados.',bad:'LED vermelho: consumo alto. O risco de gasto do mês é ruim.'};
+function setS(k){for(const j in lm)lm[j].forEach(m=>m.emissiveIntensity=j==k?1.8:.03);
+l.fillStyle='#1d4ed8';l.fillRect(0,0,284,96);l.fillStyle='#e8f0ff';l.font='bold 30px monospace';l.fillText(TX[k][0],14,38);l.fillText(TX[k][1],14,76);pl.material.map.needsUpdate=true;
+document.querySelectorAll('.sb').forEach(b=>b.classList.toggle('on',b.dataset.s==k));document.getElementById('sd').textContent=SD[k];setV('front');fixTh()}
+document.querySelectorAll('.sb').forEach(b=>b.onclick=()=>setS(b.dataset.s));setS('good');
+function go2(p){document.querySelectorAll('.pg').forEach(e=>e.classList.toggle('on',e.id==p));document.querySelectorAll('.nv').forEach(b=>b.classList.toggle('on',b.dataset.p==p));scrollTo(0,0);rs();io()}
+document.querySelectorAll('.nv').forEach(b=>b.onclick=()=>go2(b.dataset.p));
+const ob=new IntersectionObserver(a=>a.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')}),{threshold:.15});
+function io(){document.querySelectorAll('.pg.on .rv').forEach(e=>ob.observe(e))}io();
+const QS=['Pequenas correntes, grandes economias.','Quem mede, controla.','Energia consciente acende o futuro.','Ideias verdes iluminam o mundo.','Economizar hoje é cuidar do amanhã.'];
+let qi=0;const qe=document.getElementById('q');
+function qt(){const s=QS[qi++%QS.length];qe.textContent='';let i=0;const t=setInterval(()=>{qe.textContent=s.slice(0,++i);if(i>=s.length){clearInterval(t);setTimeout(qt,2600)}},45)}qt();
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const t=encodeURIComponent('Pedido Inova Green: '+n.value+', '+k.value+', WhatsApp '+document.getElementById('t').value);navigator.clipboard&&navigator.clipboard.writeText(decodeURIComponent(t)).catch(()=>{});document.getElementById('m').textContent='Pedido copiado! Abrindo o Instagram: cole a mensagem na conversa.';window.open('https://ig.me/m/inovagreengg','_blank')};
+</script><canvas id="tr"></canvas>
+<script>
+(function(){
+const l1=document.getElementById('ls1'),l2=document.getElementById('ls2');
+const LT={good:['BOM  0.90W','P:0.90W I:0.30A | E:0.002kWh | R$:0.00 | LED VERDE: consumo baixo'],
+mid:['MEDIO 1.8W','P:1.80W I:0.60A | E:0.004kWh | R$:0.01 | LED AMARELO: atencao'],
+bad:['RUIM  3.5W','P:3.50W I:1.17A | E:0.009kWh | R$:0.02 | LED VERMELHO: gasto alto!']};
+let cur='good',pos=0;
+const pad=t=>(t+' '.repeat(16)).slice(0,16);
+function tick(){const t=LT[cur][1]+'    ',w=t+t;l2.textContent=w.substr(pos%t.length,16);pos++}
+function lcdSet(k){cur=k;pos=0;l1.textContent=pad(LT[k][0]);tick()}
+const o=window.setS;window.setS=function(k){o(k);lcdSet(k)};
+lcdSet('good');setInterval(tick,320);
+/* rastro do mouse */
+const cv=document.getElementById('tr'),cx=cv.getContext('2d');let P=[],w,h,d;
+function sz(){d=Math.min(2,devicePixelRatio||1);w=cv.width=innerWidth*d;h=cv.height=innerHeight*d}
+sz();addEventListener('resize',sz);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+ const C=['34,197,94','34,197,94','34,197,94','250,204,21','239,68,68'];
+ addEventListener('pointermove',e=>{for(let i=0;i<2;i++)P.push({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2-.3,r:3+Math.random()*4,l:1,c:C[Math.random()*C.length|0]});if(P.length>90)P.splice(0,P.length-90)});
+ (function f(){requestAnimationFrame(f);cx.clearRect(0,0,w,h);P=P.filter(p=>(p.l-=.02)>0);
+  for(const p of P){p.x+=p.vx;p.y+=p.vy;cx.fillStyle='rgba('+p.c+','+(p.l*.6)+')';cx.beginPath();cx.arc(p.x*d,p.y*d,p.r*p.l*d,0,7);cx.fill()}})();
+}
+})();
+</script>
+<script>
+(function(){
+/* 3D: vista explodida, corrente animada, peças clicáveis */
+const ms=[];g.traverse(o=>{if(o.isMesh)ms.push(o)});
+const tb=ms.filter(m=>m.geometry.type=='TubeGeometry'),pr=ms.filter(m=>m.geometry.type!='TubeGeometry');
+const o0=pr.map(m=>{const p=m.position;let d;if(Math.abs(p.x)>60)d=[p.x*.9,0,0];else if(Math.abs(p.z)>30&&Math.abs(p.z)<40)d=[0,0,p.z*.9];else d=[0,p.y*1.4,0];return{m,p:p.clone(),d}});
+const fl=[],gm=new THREE.SphereGeometry(1.1,8,6),mm=new THREE.MeshBasicMaterial({color:0xbbf7d0});
+(window.FW||[]).forEach(c=>{for(let i=0;i<2;i++){const s=new THREE.Mesh(gm,mm);g.add(s);fl.push({s,c,t:i/2})}});
+const SP={good:.003,mid:.007,bad:.014};let spd=.003,f=0,tg=0;
+const o1=window.setS;window.setS=function(k){o1(k);spd=SP[k]};
+const ex=document.getElementById('ex');
+ex.onclick=()=>{tg=tg?0:1;ex.textContent=tg?'Montar':'Desmontar';if(tg){go=[0,60,0,.75,1.05,520];fixTh();document.querySelectorAll('.vb').forEach(b=>b.classList.remove('on'))}};
+(function a(){requestAnimationFrame(a);f+=(tg-f)*.1;o0.forEach(q=>q.m.position.set(q.p.x+q.d[0]*f,q.p.y+q.d[1]*f,q.p.z+q.d[2]*f));
+const v=f<.04;tb.forEach(m=>m.visible=v);fl.forEach(q=>{q.t=(q.t+spd)%1;q.s.position.copy(q.c.getPoint(q.t));q.s.visible=v})})();
+const INF={0x0e6f8f:['Arduino','Lê o sensor, calcula potência e energia e controla display, LEDs e buzzer.'],0x1e40af:['Display LCD 16x2','Mostra potência, corrente e o nível de risco.'],0x1d4ed8:['Sensor de corrente (ACS712)','Mede a corrente elétrica do aparelho ligado.'],0x16a34a:['Sensor de corrente (ACS712)','Mede a corrente elétrica do aparelho ligado.'],0x22c55e:['LED verde','Consumo baixo.'],0xfacc15:['LED amarelo','Atenção: consumo médio.'],0xef4444:['LED vermelho','Risco alto de gasto no mês.'],0xf3f1ea:['Protoboard','Placa onde os componentes são conectados.'],0xfff2b0:['Lâmpada','Exemplo de aparelho ligado ao medidor.']};
+const inf=m=>INF[m.material.color.getHex()]||(m.geometry.type=='CylinderGeometry'&&m.geometry.parameters.radiusTop==6?['Buzzer','Faz o aviso sonoro do aparelho.']:null);
+const rc=new THREE.Raycaster(),mv=new THREE.Vector2(),pi=document.getElementById('pi');let dn=null,hl=null;
+cn.addEventListener('pointerdown',e=>dn=[e.clientX,e.clientY]);
+cn.addEventListener('pointerup',e=>{if(!dn||Math.hypot(e.clientX-dn[0],e.clientY-dn[1])>5)return;const r=cn.getBoundingClientRect();
+mv.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);rc.setFromCamera(mv,cam);
+const h=rc.intersectObjects(pr,false).find(x=>x.object.visible&&inf(x.object));if(hl){hl.material.emissive.setHex(0);hl=null}
+if(!h){pi.textContent='';return}const o=h.object,t=inf(o);pi.innerHTML='<b>'+t[0]+':</b> '+t[1];
+if(o.material.emissive.getHex()==0){o.material.emissive.setHex(0x16a34a);o.material.emissiveIntensity=.6;hl=o}});
+})();
+</script>
+<script>
+(function(){
+const MR=new THREE.WebGLRenderer({antialias:true,alpha:true});MR.setSize(220,220);const MI=[];
+function mini(cv,bd,tl){const sc=new THREE.Scene(),gr=new THREE.Group();sc.add(gr);sc.add(new THREE.HemisphereLight(0xffffff,0x334438,.85));
+const a=new THREE.DirectionalLight(0xffffff,.9);a.position.set(3,5,4);sc.add(a);const b=new THREE.DirectionalLight(0x86efac,.5);b.position.set(-4,2,-3);sc.add(b);
+const mt=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.5,metalness:.1},o||{}));
+const ad=(m,x,y,z)=>{m.position.set(x,y,z);gr.add(m);return m};
+const B=(w,h,d,c,x,y,z,o)=>ad(new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mt(c,o)),x,y,z);
+const C=(r,h,c,x,y,z,o)=>ad(new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,32),mt(c,o)),x,y,z);
+const S=(r,c,x,y,z,o)=>ad(new THREE.Mesh(new THREE.SphereGeometry(r,24,16),mt(c,o)),x,y,z);
+bd(B,C,S,gr,mt,ad);gr.rotation.x=tl||.35;const ca=new THREE.PerspectiveCamera(32,1,.1,100);ca.position.set(0,0,6.8);
+cv.width=cv.height=220;MI.push({cv,sc,gr,ca,x:cv.getContext('2d')})}
+const E=(c,i)=>({emissive:c,emissiveIntensity:i||.9}),MT={metalness:.9,roughness:.25};
+const TB=[
+(B,C,S)=>{C(.07,2.2,0xb8bcc2,-.8,0,0,MT);B(1,.1,.1,0xb8bcc2,-.35,1.05,0,MT);C(.55,.14,0xd0d4da,.15,.95,0,MT);for(let i=0;i<6;i++)S(.045,0x60a5fa,-.1+i*.12,.2-(i%3)*.3,(i%2)*.1,E(0x60a5fa,.6))},
+(B,C,S)=>{B(2,1.2,.15,0x111111,0,.3,0);B(1.8,1,.02,0x1e293b,0,.3,.09);B(.6,.08,.4,0x333333,0,-.4,0);S(.06,0xef4444,.7,-.15,.1,E(0xef4444,1.4))},
+(B,C,S)=>{S(.6,0xfff2b0,0,.5,0,E(0xffc84a,1));C(.3,.4,0x888888,0,-.2,0,MT);C(.22,.2,0x444444,0,-.5,0)},
+(B,C,S)=>{B(1.2,2.2,.9,0xe5e7eb,0,0,0,{metalness:.3,roughness:.35});B(1.22,.03,.92,0x333333,0,.55,0);B(.06,.6,.06,0x888888,.45,.9,.48,MT);B(.06,.4,.06,0x888888,.45,.2,.48,MT)},
+(B,C,S)=>{B(2.4,.8,.7,0xf3f4f6,0,.4,0);B(2.2,.12,.05,0x9ca3af,0,.1,.37);S(.05,0x22c55e,.9,.55,.36,E(0x22c55e,1))},
+(B,C,S)=>{B(1.8,.2,.9,0xcbd5e1,0,-.45,0,MT);B(1.3,.5,.75,0x1f2937,-.1,-.1,0);B(.9,.18,.18,0x16a34a,-.1,.3,0)},
+(B,C,S)=>{B(.9,.9,.4,0xf8fafc,0,.1,0);B(.08,.4,.04,0xc0c4ca,-.2,-.55,0,MT);B(.08,.4,.04,0xc0c4ca,.2,-.55,0,MT);C(.06,.7,0x111111,0,.8,0)},
+(B,C,S)=>{B(2,1.2,1,0x15803d,0,-.1,0);B(1,.45,.05,0x1d4ed8,.25,.05,.51);[[-.65,0x22c55e],[-.35,0xfacc15],[-.05,0xef4444]].forEach(a=>S(.1,a[1],a[0],-.35,.5,E(a[1],1)))}];
+const CB=[
+(B,C,S)=>{B(2.6,.08,1.8,0x0e6f8f,0,0,0,{roughness:.3});B(.6,.4,.5,0xc0c4ca,-1.1,.24,-.3,MT);B(.5,.4,.5,0x111111,-1.15,.24,.5);B(1,.1,.3,0x111111,.3,.09,0);B(1.8,.2,.1,0x111111,.1,.14,.78);B(1.8,.2,.1,0x111111,.1,.14,-.78);C(.12,.2,0xc0c4ca,.95,.14,.1,MT);S(.07,0xef4444,-.5,.1,.5,E(0xef4444,.8))},
+(B,C,S)=>{B(1.8,.08,1.1,0x1d4ed8,0,0,0,{roughness:.3});B(.6,.45,.5,0x16a34a,-.6,.28,0);C(.12,.06,0xc0c4ca,-.6,.54,-.12,MT);C(.12,.06,0xc0c4ca,-.6,.54,.12,MT);B(.5,.1,.35,0x111111,.4,.09,0);for(let i=0;i<4;i++){B(.04,.03,.08,0xc0c4ca,.25+i*.1,.07,.22,MT);B(.04,.03,.08,0xc0c4ca,.25+i*.1,.07,-.22,MT)}},
+(B,C,S,gr)=>{B(3,.08,1.2,0x15803d,0,0,0);B(2.8,.14,1,0x111111,0,.12,0);const t=document.createElement('canvas');t.width=256;t.height=64;const x=t.getContext('2d');x.fillStyle='#1d4ed8';x.fillRect(0,0,256,64);x.fillStyle='#e8f0ff';x.font='bold 24px monospace';x.fillText('INOVA GREEN',10,26);x.fillText('P:0.90W I:0.30A',10,54);
+const p=new THREE.Mesh(new THREE.PlaneGeometry(2.4,.65),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(t)}));p.rotation.x=-Math.PI/2;p.position.set(0,.2,0);gr.add(p)},
+(B,C,S)=>{C(.55,.1,0xef4444,0,-.2,0,{roughness:.3});C(.42,.7,0xef4444,0,.2,0,{transparent:true,opacity:.85,emissive:0xef4444,emissiveIntensity:.5,roughness:.15});S(.42,0xef4444,0,.55,0,{transparent:true,opacity:.85,emissive:0xef4444,emissiveIntensity:.5,roughness:.15});C(.04,.9,0xc0c4ca,-.15,-.7,0,MT);C(.04,.7,0xc0c4ca,.15,-.6,0,MT)},
+(B,C,S)=>{C(.9,.7,0x111111,0,0,0,{roughness:.4});C(.14,.72,0x333333,0,0,0);C(.5,.02,0x1f2937,0,.36,0);C(.04,.8,0xc0c4ca,-.45,-.7,0,MT);C(.04,.8,0xc0c4ca,.45,-.7,0,MT)}];
+function wrapC(sel,L,sz,tl){document.querySelectorAll(sel).forEach((c,i)=>{const w=document.createElement('div');while(c.firstChild)w.appendChild(c.firstChild);const cv=document.createElement('canvas');cv.style.cssText='width:'+sz+'px;height:'+sz+'px;flex:none';c.style.cssText+='display:flex;align-items:center;gap:12px';c.append(cv,w);mini(cv,L[i],tl)})}
+wrapC('#tips .card',TB,100);wrapC('#tech .gr .card',CB,120,.6);
+(function lp(){requestAnimationFrame(lp);const t=performance.now()/1000;MI.forEach(m=>{if(!m.cv.offsetParent)return;m.gr.rotation.y=t*.7;MR.render(m.sc,m.ca);m.x.clearRect(0,0,220,220);m.x.drawImage(MR.domElement,0,0,220,220)})})();
+/* simulador 3D: Inova Green + PC gamer */
+const bx2=document.getElementById('c2'),R2=new THREE.WebGLRenderer({antialias:true,alpha:true});bx2.appendChild(R2.domElement);
+const S2=new THREE.Scene(),sg=new THREE.Group();S2.add(sg);const ca2=new THREE.PerspectiveCamera(34,1.8,.1,100);ca2.position.set(0,2.8,8.8);ca2.lookAt(0,.9,0);
+S2.add(new THREE.HemisphereLight(0xffffff,0x334438,.9));const d2=new THREE.DirectionalLight(0xffffff,.9);d2.position.set(3,6,5);S2.add(d2);
+const m2=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.5,metalness:.1},o||{}));
+const bb=(w,h,d,c,x,y,z,o)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m2(c,o));m.position.set(x,y,z);sg.add(m);return m};
+bb(8,.1,3.4,0x0f1a14,0,-.05,0,{roughness:.8});
+const pd=g.clone(true);pd.children.filter(o=>o.geometry&&o.geometry.parameters&&(o.geometry.parameters.radius==1.1||o.position.z<-50)).forEach(o=>pd.remove(o));pd.scale.setScalar(.012);pd.position.set(-2.4,0,.2);sg.add(pd);
+bb(1,2.2,2,0x0b0f0d,.6,1.1,0,{metalness:.3,roughness:.4});bb(.9,2,.03,0x14532d,.6,1.1,1.01,{transparent:true,opacity:.35,roughness:.1});
+const fm=[.5,1.1,1.7].map(y=>{const m=new THREE.Mesh(new THREE.TorusGeometry(.3,.05,12,32),m2(0x22c55e,{emissive:0x22c55e,emissiveIntensity:.9}));m.position.set(.6,y,.96);sg.add(m);return m});
+bb(2,1.15,.07,0x0a0a0a,2.9,1.45,0);bb(.12,.6,.1,0x333333,2.9,.5,0);bb(.7,.05,.4,0x333333,2.9,.03,0);bb(1.4,.04,.4,0x111111,2.5,.07,1.1);
+const cs=document.createElement('canvas');cs.width=380;cs.height=210;const sx=cs.getContext('2d'),tx=new THREE.CanvasTexture(cs);
+const sc2=new THREE.Mesh(new THREE.PlaneGeometry(1.9,1.05),new THREE.MeshBasicMaterial({map:tx}));sc2.position.set(2.9,1.45,.04);sg.add(sc2);
+function drw(w,k){sx.fillStyle='#052e16';sx.fillRect(0,0,380,210);sx.fillStyle='#4ade80';sx.font='bold 44px monospace';sx.fillText('PC GAMER',24,70);sx.fillStyle='#ecf5ee';sx.font='bold 38px monospace';sx.fillText(w+' W',24,130);sx.font='24px monospace';sx.fillText(k,24,175);tx.needsUpdate=true}
+const cb=new THREE.CatmullRomCurve3([[-2.94,.1,-.72],[-2,.04,-1.5],[-.6,.05,-1.5],[.45,.45,-1.02]].map(a=>new THREE.Vector3(...a)));
+sg.add(new THREE.Mesh(new THREE.TubeGeometry(cb,48,.035,6),m2(0x1c1c1c)));
+const pp=[0,1,2,3].map(i=>{const m=new THREE.Mesh(new THREE.SphereGeometry(.06,8,6),new THREE.MeshBasicMaterial({color:0xbbf7d0}));sg.add(m);return{m,t:i/4}});
+let lv='good',ry=-.2,dg=null;const CL={good:'#22c55e',mid:'#facc15',bad:'#ef4444'},NM={good:'Bom',mid:'Médio',bad:'Ruim'},SP={good:.003,mid:.007,bad:.014};
+const dc=R2.domElement;dc.addEventListener('pointerdown',e=>{dg=e.clientX;dc.setPointerCapture(e.pointerId)});dc.addEventListener('pointerup',()=>dg=null);
+dc.addEventListener('pointermove',e=>{if(dg===null)return;ry=Math.max(-1,Math.min(1,ry+(e.clientX-dg)*.006));dg=e.clientX});
+function szS(){const w=bx2.clientWidth;if(!w)return;const h=Math.min(380,Math.round(w*.55));bx2.style.height=h+'px';R2.setPixelRatio(Math.min(2,devicePixelRatio||1));R2.setSize(w,h,false);ca2.aspect=w/h;ca2.updateProjectionMatrix()}
+function calc(){const w=+pw.value,h=+hh.value,k=w*h*30/1000,c=k*(+tf.value||0),n=k<150?'good':k<300?'mid':'bad';vw.textContent=w;vh.textContent=h;
+sr.style.color=CL[n];sr.textContent='Risco '+NM[n]+' · '+k.toFixed(0)+' kWh/mês · R$ '+c.toFixed(2).replace('.',',');drw(w,k.toFixed(0)+' kWh/mês');if(n!=lv){lv=n;setS(n)}}
+['pw','hh','tf'].forEach(i=>document.getElementById(i).addEventListener('input',calc));calc();
+const og=window.go2;window.go2=function(p){og(p);if(p=='sim')szS()};addEventListener('resize',szS);
+(function l2(){requestAnimationFrame(l2);if(!bx2.offsetParent)return;const t=performance.now()/1000;sg.rotation.y+=(ry+Math.sin(t*.4)*.08-sg.rotation.y)*.1;
+fm.forEach((m,i)=>{m.material.color.setHSL((t*.2+i*.15)%1,1,.5);m.material.emissive.copy(m.material.color)});
+pp.forEach(q=>{q.t=(q.t+SP[lv])%1;q.m.position.copy(cb.getPoint(q.t))});R2.render(S2,ca2)})();
+})();
+</script>
+<script>
+document.querySelectorAll('#tips .card').forEach(c=>{c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-expanded','false');
+const t=()=>{const o=c.classList.toggle('open');c.setAttribute('aria-expanded',o)};
+c.addEventListener('click',t);c.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();t()}})});
+</script>
+</body></html>
